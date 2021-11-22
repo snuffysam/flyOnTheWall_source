@@ -9,6 +9,7 @@ public class ButtonActivateMoveScript : ButtonActivateScript
     public bool repeatable;
     int mode;
     Vector3 finalPos;
+    Vector3 startPos;
     Vector3 displacement3;
     // Start is called before the first frame update
     void Start()
@@ -16,6 +17,7 @@ public class ButtonActivateMoveScript : ButtonActivateScript
         mode = 0;
         displacement3 = displacement;
         finalPos = transform.position + displacement3;
+        startPos = transform.position;
     }
 
     // Update is called once per frame
@@ -24,7 +26,7 @@ public class ButtonActivateMoveScript : ButtonActivateScript
         if (mode == 1){
             transform.position += displacement3*(Time.deltaTime/displacementTime);
             //Debug.Log("magnitude: " + (transform.position-finalPos).magnitude);
-            if ((transform.position-finalPos).magnitude < 0.15f){
+            if ((transform.position-startPos).magnitude > (displacement3).magnitude){
                 mode = 2;
             }
         }

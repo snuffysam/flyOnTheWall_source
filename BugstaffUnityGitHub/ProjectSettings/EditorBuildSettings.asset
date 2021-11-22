@@ -6,6 +6,24 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/TitleScreen.unity
+    guid: 56102a1e42da548aeb83a518ec26a8d4
+  - enabled: 1
+    path: Assets/Scenes/Intro1.unity
+    guid: f2ca5ed3f18b8476d855c4cd5f416405
+  - enabled: 1
+    path: Assets/Scenes/Intro3.unity
+    guid: 52023e431039f4dfea9b01b91ca6c98d
+  - enabled: 1
+    path: Assets/Scenes/Intro2.unity
+    guid: 7f16ec00e6f68486183da96f06cfd23f
+  - enabled: 1
+    path: Assets/Scenes/Intro4.unity
+    guid: 6d10988a6de294a4b86edba2b01d93d5
+  - enabled: 1
+    path: Assets/Scenes/MissionSelect.unity
+    guid: 077a667c89fa045bfb4d9571a6e9c1ce
+  - enabled: 1
     path: Assets/Scenes/Palace1.unity
     guid: a8a3ff899733e46f19f0cd89dc745ab5
   - enabled: 1
@@ -14,6 +32,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Palace3.unity
     guid: 02778e6cf76c3442daf79c547b5e97e2
+  - enabled: 1
+    path: Assets/Scenes/Palace4.unity
+    guid: 039924f0eae4049d78b295c4fd434710
+  - enabled: 1
+    path: Assets/Scenes/Palace5.unity
+    guid: 4ad13dd548e2a46d38ec4aff0fe5040e
+  - enabled: 1
+    path: Assets/Scenes/Palace6.unity
+    guid: 0212b694cde0c47708cca0bf3bde6696
   - enabled: 1
     path: Assets/Scenes/Midpoint1.unity
     guid: b8425f081ebb14584ac3ec1fe618d018

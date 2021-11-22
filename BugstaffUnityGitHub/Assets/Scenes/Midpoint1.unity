@@ -3503,13 +3503,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 3639280797805548054}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bb24fee38e234b129c26a3bfb28f781, type: 3}
+  m_Script: {fileID: 11500000, guid: 68f81fb61883c4d979268a3066d86015, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: DemoEnd
+  sceneToLoad: 
   xPosLoad: 0
   yPosLoad: 0
-  loadDirection: 1
+  loadDirection: 0
 --- !u!1001 &5787156343149614293
 PrefabInstance:
   m_ObjectHideFlags: 0

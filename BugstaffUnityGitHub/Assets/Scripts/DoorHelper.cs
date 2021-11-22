@@ -24,7 +24,7 @@ public class DoorHelper : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (SceneManager.GetActiveScene().name.Equals(loadedScene)){
+        if (SceneManager.GetActiveScene().name.Equals(loadedScene)){
         PlayerController[] pcs = FindObjectsOfType<PlayerController>();
         foreach (PlayerController pc in pcs){
             pc.transform.position = new Vector3(xPosLoad, yPosLoad, 0f);
@@ -34,6 +34,6 @@ public class DoorHelper : MonoBehaviour
         if (counter <= 0){
             Destroy(this.gameObject);
         }
-        //}
+        }
     }
 }

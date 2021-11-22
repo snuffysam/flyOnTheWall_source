@@ -25,7 +25,7 @@ public class DoorScript : MonoBehaviour
     void OnTriggerStay2D(Collider2D other)
     {
         if (Input.GetButtonDown("Jump") || Input.GetButtonDown("Fire1")){
-            Destroy(GetComponent<SpriteRenderer>());
+            //Destroy(GetComponent<SpriteRenderer>());
             Destroy(GetComponent<Collider2D>());
             GameObject go = new GameObject();
             go.AddComponent<DoorHelper>();

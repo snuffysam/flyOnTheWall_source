@@ -15,7 +15,7 @@ namespace Platformer.Mechanics
         /// <summary>
         /// The maximum hit points for the entity.
         /// </summary>
-        public static int maxHP = 2;
+        public static int maxHP = 1;
 
         public static List<String> heartsObtained;
 

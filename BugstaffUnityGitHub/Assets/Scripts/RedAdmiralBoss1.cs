@@ -17,10 +17,17 @@ public class RedAdmiralBoss1 : MonoBehaviour
     int state;
     int hurtCounter;
     int maxHurtCounter = 3;
+    float[] pauseXPrevDist;
+    float prevXPos;
+    int checkpoint;
     // Start is called before the first frame update
     void Start()
     {
-        
+        pauseXPrevDist = new float[pauseX.Length];
+        for (int i = 0; i < pauseXPrevDist.Length; i++){
+            pauseXPrevDist[i] = 999f;
+        }
+        prevXPos = transform.position.x;
     }
 
     // Update is called once per frame
@@ -47,11 +54,13 @@ public class RedAdmiralBoss1 : MonoBehaviour
         }
         
         if (transform.position.x > turnMaxX && !GetComponent<SpriteRenderer>().flipX){
+            checkpoint = 3;
             GetComponent<SpriteRenderer>().flipX = true;
             return;
         }
         
         if (transform.position.x < turnMinX && GetComponent<SpriteRenderer>().flipX){
+            checkpoint = 0;
             GetComponent<SpriteRenderer>().flipX = false;
             return;
         }
@@ -67,14 +76,38 @@ public class RedAdmiralBoss1 : MonoBehaviour
             if (Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x) < moveSpeed){
                 GetComponent<Rigidbody2D>().velocity = new Vector3(moveSpeed*velMult, 0f, 0f);
             }
-            waitTimer += Time.deltaTime;
+            if (checkpoint == 0 && transform.position.x > pauseX[0]){
+                checkpoint = 1;
+                GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+                waitTimer = 0f;
+                state = 1;
+            } else if (checkpoint == 1 && transform.position.x > pauseX[1]){
+                checkpoint = 2;
+                GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+                waitTimer = 0f;
+                state = 1;
+            } else if (checkpoint == 3 && transform.position.x < pauseX[1]){
+                checkpoint = 4;
+                GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+                waitTimer = 0f;
+                state = 1;
+            } else if (checkpoint == 4 && transform.position.x < pauseX[0]){
+                checkpoint = 5;
+                GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+                waitTimer = 0f;
+                state = 1;
+            }
+            /*waitTimer += Time.deltaTime;
+            float dX = Mathf.Abs(transform.position.x-prevXPos);
             for (int i = 0; i < pauseX.Length; i++){
-                if (Mathf.Abs(transform.position.x-pauseX[i]) < 0.1f && waitTimer > 0.1f){
+                float dist = Mathf.Abs(transform.position.x-pauseX[i]);
+                if (dist < dX*2f && waitTimer > 0.1f){
                     GetComponent<Rigidbody2D>().velocity = Vector3.zero;
                     waitTimer = 0f;
                     state = 1;
                 }
             }
+            prevXPos = transform.position.x;*/
         } else if (state == 1){
             slashed = false;
             GetComponent<Rigidbody2D>().velocity = Vector3.zero;

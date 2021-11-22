@@ -13,6 +13,10 @@ public class MissionManager : MonoBehaviour
     public static string[] charmTutorials = {"[Press Down Arrow to use the Spice Charm.]", "[Press Up mid-air to use the Aroma Charm.]", "Flash", "Palm"};
     public static Vector2[] startPoints = {new Vector2(-1.4f,7.5f), Vector2.zero, Vector2.zero, Vector2.zero};
     public static bool[] startDirections = {true, true, false, false};
+    public static Vector2[] returnPoints = {new Vector2(9.89f,-0.51f), Vector2.zero, Vector2.zero, Vector2.zero};
+    public static bool[] returnDirections = {true, true, false, false};
+    public static string[] missionStart = {"Palace1", "Midpoint2", "Midpoint3", "Midpoint4"};
+    public static int completed;
     // Start is called before the first frame update
     void Start()
     {
@@ -63,5 +67,33 @@ public class MissionManager : MonoBehaviour
 
     public static bool GetMidpointFlip(){
         return startDirections[missionNumber];
+    }
+
+    public static float GetReturnX(){
+        return returnPoints[missionIndex].x;
+    }
+
+    public static float GetReturnY(){
+        return returnPoints[missionIndex].y;
+    }
+
+    public static bool GetReturnFlip(){
+        return returnDirections[missionIndex];
+    }
+
+    public static string GetMissionStart(){
+        return missionStart[missionIndex];
+    }
+
+    public static bool IsMissionBeaten(int index){
+        byte completedByte = (byte)(completed);
+        return (completedByte & (1 << index)) != 0;
+    }
+
+    public static void CompleteMission(){
+        if (!IsMissionBeaten(missionIndex)){
+            completed += (int)(Mathf.Pow(2,missionIndex));
+            missionNumber++;
+        }
     }
 }

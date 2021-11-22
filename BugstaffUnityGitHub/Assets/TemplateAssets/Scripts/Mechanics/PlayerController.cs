@@ -52,6 +52,7 @@ namespace Platformer.Mechanics
         private float weaponCharge = 0f;
         private float maxWeaponCharge = 1f;
         public GameObject bugChargeVisual;
+        public GameObject parabolaVisual;
         private float bugChargeRelativeX;
         public GameObject bugShotPrefab;
         private bool fired = false;
@@ -72,6 +73,11 @@ namespace Platformer.Mechanics
         private bool canFirePepperSpray;
         private bool isBackJumping;
 
+        public GameObject indicatorPrefab;
+        private List<GameObject> indicators;
+        private float indicatorTimer;
+        private float indicatorMaxTimer = 0.05f;
+
         void Awake()
         {
             health = GetComponent<Health>();
@@ -79,9 +85,11 @@ namespace Platformer.Mechanics
             collider2d = GetComponent<Collider2D>();
             spriteRenderer = GetComponent<SpriteRenderer>();
             animator = GetComponent<Animator>();
+            indicators = new List<GameObject>();
             bugChargeRelativeX = bugChargeVisual.transform.localPosition.x;
             Instantiate<GameObject>(listenerPrefab).GetComponent<FollowScript>().go = this.gameObject;
             moveOverride = Vector2.zero;
+            indicatorMaxTimer = 99999f;
         }
 
         protected override void Update()
@@ -100,10 +108,10 @@ namespace Platformer.Mechanics
                     }
                 }
 
-                if (Input.GetButtonDown("Fire1")){
+                if (Input.GetAxis("Fire1") > 0f){
                     weaponButton = true;
                 }
-                if (Input.GetButtonUp("Fire1")){
+                if (Input.GetAxis("Fire1") <= 0f){
                     weaponButton = false;
                 }
                 if (!animator.GetCurrentAnimatorStateInfo(0).IsName("BackJump_Character")){
@@ -114,22 +122,44 @@ namespace Platformer.Mechanics
                     chargingWeapon = true;
                     fired = false;
 
-                    weaponCharge += Time.deltaTime;
+                    weaponCharge += Time.deltaTime*0.8f;
                     if (weaponCharge > maxWeaponCharge){
                         weaponCharge = maxWeaponCharge;
                     }
 
                     bugChargeVisual.SetActive(true);
+                    parabolaVisual.SetActive(true);
                     bugChargeVisual.GetComponent<SpriteRenderer>().flipX = spriteRenderer.flipX;
+                    Vector3 bugPos = Vector3.zero;
                     if (spriteRenderer.flipX){
-                        bugChargeVisual.transform.localPosition = new Vector3(-bugChargeRelativeX, bugChargeVisual.transform.localPosition.y, 0f);
+                        bugPos = new Vector3(-bugChargeRelativeX, bugChargeVisual.transform.localPosition.y, 0f);
+                        bugChargeVisual.transform.localPosition = bugPos;
+                        parabolaVisual.transform.localPosition = bugPos;
+                        parabolaVisual.transform.eulerAngles = new Vector3(0f, 180f, 0f);
                         bugChargeVisual.transform.Rotate(0f, 0f, weaponCharge*Time.deltaTime*1500f);
                     } else {
-                        bugChargeVisual.transform.localPosition = new Vector3(bugChargeRelativeX, bugChargeVisual.transform.localPosition.y, 0f);
+                        bugPos = new Vector3(bugChargeRelativeX, bugChargeVisual.transform.localPosition.y, 0f);
+                        bugChargeVisual.transform.localPosition = bugPos;
+                        parabolaVisual.transform.localPosition = bugPos;
+                        parabolaVisual.transform.eulerAngles = new Vector3(0f, 0f, 0f);
                         bugChargeVisual.transform.Rotate(0f, 0f, -weaponCharge*Time.deltaTime*1500f);
                     }
+                    parabolaVisual.transform.localScale = new Vector3((weaponCharge+0.01f)*22f, 2f, 1f);
 
                     move.x = 0f;
+
+                    indicatorTimer += Time.deltaTime;
+                    if (indicatorTimer > indicatorMaxTimer){
+                        indicatorTimer = 0f;
+                        GameObject ind = Instantiate<GameObject>(indicatorPrefab);
+                        ind.transform.position = transform.position + bugPos;
+                        if (spriteRenderer.flipX){
+                            ind.GetComponent<Rigidbody2D>().velocity = new Vector3(-weaponCharge*25f, 0f, 0f);
+                        } else {
+                            ind.GetComponent<Rigidbody2D>().velocity = new Vector3(weaponCharge*25f, 0f, 0f);
+                        }
+                        indicators.Add(ind);
+                    }
                 } else if (!chargingWeapon && !animator.GetCurrentAnimatorStateInfo(0).IsName("Shoot_Character")) {
                     move.x = Input.GetAxis("Horizontal");
                     if (move.x > 0.01f){
@@ -174,25 +204,7 @@ namespace Platformer.Mechanics
                         }
                     }
                 } else {
-                    chargingWeapon = false;
-
-                    if (!fired){
-                        fired = true;
-                        GameObject bugShot = Instantiate<GameObject>(bugShotPrefab);
-                        bugShot.transform.position = bugChargeVisual.transform.position;
-                        bugShot.transform.rotation = bugChargeVisual.transform.rotation;
-                        bugShot.GetComponent<SpriteRenderer>().flipX = bugChargeVisual.GetComponent<SpriteRenderer>().flipX;
-                        if (bugShot.GetComponent<SpriteRenderer>().flipX){
-                            bugShot.GetComponent<Rigidbody2D>().velocity = new Vector3(-weaponCharge*25f, 0f, 0f);
-                            bugShot.GetComponent<Rigidbody2D>().angularVelocity = weaponCharge*1500f;
-                        } else {
-                            bugShot.GetComponent<Rigidbody2D>().velocity = new Vector3(weaponCharge*25f, 0f, 0f);
-                            bugShot.GetComponent<Rigidbody2D>().angularVelocity = -weaponCharge*1500f;
-                        }
-                    }
-
-                    bugChargeVisual.SetActive(false);
-                    weaponCharge = 0f;
+                    FireBug();
                 }
             }
             else
@@ -200,6 +212,9 @@ namespace Platformer.Mechanics
                 move.x = 0;
                 if (moveOverride.magnitude > 0){
                     move = moveOverride;
+                }
+                if (weaponButton){
+                    FireBug();
                 }
             }
 
@@ -212,6 +227,35 @@ namespace Platformer.Mechanics
 
             UpdateJumpState();
             base.Update();
+        }
+
+        void FireBug(){
+            weaponButton = false;
+            chargingWeapon = false;
+
+            if (!fired){
+                fired = true;
+                GameObject bugShot = Instantiate<GameObject>(bugShotPrefab);
+                bugShot.transform.position = bugChargeVisual.transform.position;
+                bugShot.transform.rotation = bugChargeVisual.transform.rotation;
+                bugShot.GetComponent<SpriteRenderer>().flipX = bugChargeVisual.GetComponent<SpriteRenderer>().flipX;
+                if (bugShot.GetComponent<SpriteRenderer>().flipX){
+                    bugShot.GetComponent<Rigidbody2D>().velocity = new Vector3(-weaponCharge*25f, 0f, 0f);
+                    bugShot.GetComponent<Rigidbody2D>().angularVelocity = weaponCharge*1500f;
+                } else {
+                    bugShot.GetComponent<Rigidbody2D>().velocity = new Vector3(weaponCharge*25f, 0f, 0f);
+                    bugShot.GetComponent<Rigidbody2D>().angularVelocity = -weaponCharge*1500f;
+                }
+            }
+
+            bugChargeVisual.SetActive(false);
+            parabolaVisual.SetActive(false);
+            weaponCharge = 0f;
+
+            foreach (GameObject ind in indicators){
+                Destroy(ind);
+            }
+            indicators = new List<GameObject>();
         }
 
         void Respawn(){
@@ -308,6 +352,9 @@ namespace Platformer.Mechanics
         }
 
         public void PlayerDeath(){
+            if (weaponButton){
+                FireBug();
+            }
             health.Die();
             //model.virtualCamera.m_Follow = null;
             //model.virtualCamera.m_LookAt = null;
@@ -317,13 +364,20 @@ namespace Platformer.Mechanics
             if (audioSource && ouchAudio){
                 audioSource.PlayOneShot(ouchAudio);
             }
-            animator.SetTrigger("hurt");
-            animator.SetBool("dead", true);
+            if (!animator.GetBool("dead") && !animator.GetCurrentAnimatorStateInfo(0).IsName("Player-Death")){
+                animator.SetTrigger("hurt");
+                animator.SetBool("dead", true);
+            }
             //Simulation.Schedule<PlayerSpawn>(2);
         }
 
         public void PlayerHit(){
-            animator.SetTrigger("hurt");
+            if (weaponButton){
+                FireBug();
+            }
+            if (!animator.GetBool("dead") && !animator.GetCurrentAnimatorStateInfo(0).IsName("Player-Death")){
+                animator.SetTrigger("hurt");
+            }
         }
     }
 }

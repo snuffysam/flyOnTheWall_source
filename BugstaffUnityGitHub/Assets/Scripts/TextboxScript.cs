@@ -39,7 +39,7 @@ public class TextboxScript : MonoBehaviour
                 tmp.x = tmp.x-Time.deltaTime*3f;
                 GetComponent<RectTransform>().localScale = tmp;
             } else {
-                if (!resetControls){
+                if (!resetControls && playerController != null){
                     resetControls = true;
                     playerController.controlEnabled = true;
                 }
@@ -54,7 +54,9 @@ public class TextboxScript : MonoBehaviour
                 mode = 1;
             }
         } else if (mode == 1){
-            playerController.controlEnabled = false;
+            if (playerController != null){
+                playerController.controlEnabled = false;
+            }
             if (GetComponent<RectTransform>().localScale.x < 1f){
                 Vector3 tmp = GetComponent<RectTransform>().localScale;
                 tmp.x = tmp.x+Time.deltaTime*3f;

@@ -329,7 +329,7 @@ PrefabInstance:
     - target: {fileID: 2616812808358872897, guid: c09c192c8f2134463b714830e977b795,
         type: 3}
       propertyPath: m_RootOrder
-      value: 30
+      value: 29
       objectReference: {fileID: 0}
     - target: {fileID: 2616812808358872897, guid: c09c192c8f2134463b714830e977b795,
         type: 3}
@@ -577,7 +577,7 @@ PrefabInstance:
     - target: {fileID: 2616812808358872897, guid: c09c192c8f2134463b714830e977b795,
         type: 3}
       propertyPath: m_RootOrder
-      value: 28
+      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: 2616812808358872897, guid: c09c192c8f2134463b714830e977b795,
         type: 3}
@@ -671,7 +671,7 @@ PrefabInstance:
     - target: {fileID: 2616812808358872897, guid: c09c192c8f2134463b714830e977b795,
         type: 3}
       propertyPath: m_RootOrder
-      value: 29
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 2616812808358872897, guid: c09c192c8f2134463b714830e977b795,
         type: 3}
@@ -804,6 +804,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084599545391651346, guid: 3bb5e7c8db98c455fb5fa60744e8ac67,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084599545391651346, guid: 3bb5e7c8db98c455fb5fa60744e8ac67,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3bb5e7c8db98c455fb5fa60744e8ac67, type: 3}
@@ -1448,7 +1458,7 @@ Transform:
   m_LocalScale: {x: 1.5, y: 0.75, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &338553553
 BoxCollider2D:
@@ -1496,7 +1506,7 @@ MonoBehaviour:
     text: So, your majesty, you have a meeting with your war advisors in five-
     emphasis: 0
   - speakerName: Silque
-    text: Did you know there's gonna be a solar eclipse tomorrow?!
+    text: Did you know there's gonna be a solar eclipse soon?!
     emphasis: 0
   - speakerName: Arva
     text: I... yes? I think I told you last Wednesday. But, it's still fascinating,
@@ -1704,7 +1714,7 @@ PrefabInstance:
     - target: {fileID: 2616812808358872897, guid: c09c192c8f2134463b714830e977b795,
         type: 3}
       propertyPath: m_RootOrder
-      value: 32
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 2616812808358872897, guid: c09c192c8f2134463b714830e977b795,
         type: 3}
@@ -1793,7 +1803,7 @@ PrefabInstance:
     - target: {fileID: 2616812808358872897, guid: c09c192c8f2134463b714830e977b795,
         type: 3}
       propertyPath: m_RootOrder
-      value: 25
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 2616812808358872897, guid: c09c192c8f2134463b714830e977b795,
         type: 3}
@@ -1980,7 +1990,7 @@ Transform:
   m_LocalScale: {x: 100, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &517839007
 GameObject:
@@ -2089,7 +2099,7 @@ Transform:
   m_LocalScale: {x: 6, y: 6, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 33
+  m_RootOrder: 32
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
@@ -2297,114 +2307,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &766488636
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 766488638}
-  - component: {fileID: 766488637}
-  - component: {fileID: 766488639}
-  m_Layer: 0
-  m_Name: OpeningDialogue
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!61 &766488637
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 766488636}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
---- !u!4 &766488638
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 766488636}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.41, y: 4.51, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 20
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &766488639
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 766488636}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05dd659688e294b668e6aa0d8c2e0590, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  delay: 2
-  textToSend:
-  - speakerName: Oruma
-    text: Fly On The Wall? This is Oruma, do you copy?
-    emphasis: 0
-  - speakerName: Alena
-    text: Loud and clear.
-    emphasis: 0
-  - speakerName: Oruma
-    text: Good. Now, pay close attention. This is the most important mission of your
-      life.
-    emphasis: 0
-  - speakerName: Oruma
-    text: You will be infiltrating Empress Silque's grand palace. All our intel points
-      to her organizing a meeting with her top war advisors today.
-    emphasis: 0
-  - speakerName: Oruma
-    text: Your mission is to listen in on this meeting. Empress Silque's car arrives
-      in 30 seconds, at which point the palace gates will be unlocked.
-    emphasis: 0
-  - speakerName: Oruma
-    text: The door to the meeting room will also be unlocked at that time, so the
-      advisors can begin to make their way inside.
-    emphasis: 0
-  - speakerName: Oruma
-    text: This means you have a five minute window to make it to the meeting room
-      and bug it before Empress Silque enters the room and the doors are locked.
-    emphasis: 0
-  - speakerName: Oruma
-    text: The fate of the entire island of Tadalet could depend on this. Do you understand,
-      Fly On The Wall?
-    emphasis: 0
-  - speakerName: Alena
-    text: Yes.
-    emphasis: 0
-  - speakerName: Oruma
-    text: Good. Begin preparing for your pursuit.
-    emphasis: 0
 --- !u!1 &865827604
 GameObject:
   m_ObjectHideFlags: 0
@@ -2607,7 +2509,7 @@ PrefabInstance:
     - target: {fileID: 2616812808358872897, guid: c09c192c8f2134463b714830e977b795,
         type: 3}
       propertyPath: m_RootOrder
-      value: 31
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2616812808358872897, guid: c09c192c8f2134463b714830e977b795,
         type: 3}
@@ -2774,7 +2676,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 985152955}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.79, y: 1.6, z: 0}
+  m_LocalPosition: {x: -0.79, y: 1.1, z: 0}
   m_LocalScale: {x: 12, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2883,7 +2785,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1021260327}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.57, y: 1.6, z: 0}
+  m_LocalPosition: {x: 5.57, y: 0.6, z: 0}
   m_LocalScale: {x: 12, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2910,7 +2812,7 @@ PrefabInstance:
     - target: {fileID: 2533685927099219296, guid: 37c891472d06343559cf08c2c8711d21,
         type: 3}
       propertyPath: m_RootOrder
-      value: 24
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 2533685927099219296, guid: 37c891472d06343559cf08c2c8711d21,
         type: 3}
@@ -3430,7 +3332,7 @@ Transform:
   m_LocalScale: {x: 1.5, y: 11, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 27
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1896568112
 MonoBehaviour:
@@ -3661,7 +3563,7 @@ PrefabInstance:
     - target: {fileID: 5366286965550418158, guid: cebd714bcd0154e58a4ad9dc18632bf1,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.9900334
+      value: -0.93
       objectReference: {fileID: 0}
     - target: {fileID: 5366286965550418158, guid: cebd714bcd0154e58a4ad9dc18632bf1,
         type: 3}
@@ -3827,7 +3729,7 @@ Transform:
   m_LocalScale: {x: 12, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 26
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2110646551 stripped
 MonoBehaviour:
@@ -3856,7 +3758,7 @@ PrefabInstance:
     - target: {fileID: 2533685927099219296, guid: 8decaaeee2993470782106000a7319b6,
         type: 3}
       propertyPath: m_RootOrder
-      value: 23
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 2533685927099219296, guid: 8decaaeee2993470782106000a7319b6,
         type: 3}

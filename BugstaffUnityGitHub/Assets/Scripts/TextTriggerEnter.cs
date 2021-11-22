@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Platformer.Mechanics;
 
 public class TextTriggerEnter : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class TextTriggerEnter : MonoBehaviour
     bool alreadyActivated;
     float delayTimer;
     bool alreadySent;
+    PlayerController playerController;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +22,13 @@ public class TextTriggerEnter : MonoBehaviour
     {
         if (alreadyActivated && !alreadySent){
             delayTimer += Time.deltaTime;
+            if (playerController != null){
+                playerController.controlEnabled = false;
+            }
             if (delayTimer > delay){
+            if (playerController != null){
+                playerController.controlEnabled = true;
+            }
                 if (!alreadySent){
                     alreadySent = true;
                     TextboxScript tbs = FindObjectOfType<TextboxScript>();
@@ -36,6 +44,9 @@ public class TextTriggerEnter : MonoBehaviour
     {
         if (!alreadyActivated){
             alreadyActivated = true;
+            if (other.GetComponent<PlayerController>() != null){
+                playerController = other.GetComponent<PlayerController>();
+            }
         }
     }
 }

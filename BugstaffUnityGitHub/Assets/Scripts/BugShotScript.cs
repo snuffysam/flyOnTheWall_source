@@ -25,6 +25,8 @@ public class BugShotScript : MonoBehaviour
         GetComponent<Rigidbody2D>().isKinematic = true;
         Destroy(GetComponent<Collider2D>());
         transform.SetParent(collision.collider.transform);
+        transform.position = collision.contacts[0].point;
+        //transform.localPosition = transform.localPosition*0.33f;
         //transform.parent = collision.collider.transform;
         //transform.localScale = 1f/transform.parent.localScale;
     }
