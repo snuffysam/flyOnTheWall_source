@@ -52,6 +52,7 @@ public class Finale_Cut_3 : MonoBehaviour
                 playerSpr.GetComponent<PlayerController>().controlEnabled = false;
                 playerSpr.GetComponent<PlayerController>().FireBug();
                 playerSpr.GetComponent<PlayerController>().enabled = false;
+                playerSpr.GetComponent<Animator>().SetBool("chargingGun", false);
                 playerSpr.GetComponent<Animator>().Play("Player-Idle");
             }
             if (tbs.IsEmpty()){
@@ -61,6 +62,7 @@ public class Finale_Cut_3 : MonoBehaviour
                 oruma.SetActive(true);
                 playerSpr.flipX = true;
                 vanessaSpr.flipX = true;
+                playerSpr.GetComponent<Animator>().SetBool("chargingGun", false);
                 playerSpr.GetComponent<Animator>().Play("Player-Idle");
                 mode = 2;
             }
