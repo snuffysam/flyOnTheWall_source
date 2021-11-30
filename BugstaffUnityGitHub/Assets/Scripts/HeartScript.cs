@@ -9,7 +9,7 @@ public class HeartScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (Health.HasHeart(this.gameObject.name)){
+        if (Health.HasHeart(this.gameObject.name) || PasscodeHandler.hardcore){
             Destroy(this.gameObject);
         }
     }
@@ -25,6 +25,7 @@ public class HeartScript : MonoBehaviour
     {
         if (other.gameObject.GetComponent<PlayerController>() != null){
             Health.AddHeart(this.gameObject.name);
+            AudioHandlerScript.PlayClipAtPoint("MenuScroll", "MenuScroll", 0.8f, transform.position);
             Destroy(this.gameObject);
         }
     }

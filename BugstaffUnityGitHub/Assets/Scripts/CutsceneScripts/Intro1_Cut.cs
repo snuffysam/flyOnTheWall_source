@@ -20,6 +20,10 @@ public class Intro1_Cut : MonoBehaviour
     {
         mode = 0;
         tbs = FindObjectOfType<TextboxScript>();
+        if (PasscodeHandler.hardcore){
+            textToSend1[2] = new TextboxScript.TextBlock{speakerName = "Alena", text = "Sand in my bathing suit... I remember falling off the ship... did I wash up on a beach?", emphasis = false};
+            textToSend2[textToSend2.Length-1] = new TextboxScript.TextBlock{speakerName = "", text = "[Hard Mode Enabled]", emphasis = false};
+        }
     }
 
     // Update is called once per frame

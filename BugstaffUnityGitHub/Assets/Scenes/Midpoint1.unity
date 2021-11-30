@@ -568,6 +568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d83fc1f38dad4f239b9369e2aaf8244, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musicPlayer: {fileID: 1754240611}
   textToSend1:
   - speakerName: Red Admiral
     text: Haah... impressive showing. What is your designation, spy?
@@ -1375,6 +1376,8 @@ MonoBehaviour:
   player: {fileID: 216666742}
   redAdmiral: {fileID: 430480936}
   redAdmiralBoss: {fileID: 723096355}
+  musicPlayer: {fileID: 1754240611}
+  bossClip: {fileID: 8300000, guid: 0111c44f7d5a24dd1940db8cc8aa1af4, type: 3}
   textToSend1:
   - speakerName: Alena
     text: (Ok... if Oruma's info is correct, this should be an empty room. Perfect
@@ -2801,7 +2804,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 5833894e2899f1840ac04193ca462e39, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 8a6ab2b8c412a4889814ccd44beb91da, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.334
   m_Pitch: 1

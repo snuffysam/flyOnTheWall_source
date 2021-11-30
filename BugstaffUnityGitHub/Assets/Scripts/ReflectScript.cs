@@ -31,8 +31,8 @@ public class ReflectScript : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.GetComponent<DealDamageScript>() != null){
-            other.gameObject.GetComponent<DealDamageScript>().playerOwned = !other.gameObject.GetComponent<DealDamageScript>().playerOwned;
+        if (other.gameObject.GetComponent<DealDamageScript>() != null && !other.gameObject.GetComponent<DealDamageScript>().playerOwned){
+            other.gameObject.GetComponent<DealDamageScript>().playerOwned = true;
             if (other.gameObject.GetComponent<Rigidbody2D>() != null){
                 Vector3 tmp = other.gameObject.GetComponent<Rigidbody2D>().velocity;
                 tmp.x = tmp.x*-1f;

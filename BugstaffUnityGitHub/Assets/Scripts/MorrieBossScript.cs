@@ -15,6 +15,7 @@ public class MorrieBossScript : MonoBehaviour
     public int maxHurtCounter = 3;
     PlayerController player;
     public GameObject doorSummon;
+    public AudioSource musicPlayer;
     public TextboxScript.TextBlock[] textToSend1;
     TextboxScript tbs;
     // Start is called before the first frame update
@@ -48,6 +49,7 @@ public class MorrieBossScript : MonoBehaviour
             GetComponent<Rigidbody2D>().velocity = new Vector3(speed*velMult, 0f, 0f);
             if (transform.position.x > minX){
                 mode = 1;
+                AudioHandlerScript.PlayClipAtPoint("DoorOpening", "DoorOpening", 3f, transform.position);
                 GetComponent<Animator>().SetTrigger("hurt");
             }
         } else if (mode == 1){
@@ -70,6 +72,7 @@ public class MorrieBossScript : MonoBehaviour
                 GetComponent<SpriteRenderer>().flipX = true;
             }
             if (hurtCounter >= maxHurtCounter){
+                musicPlayer.Stop();
                 GetComponent<Animator>().SetTrigger("unconscious");
                 foreach (TextboxScript.TextBlock textBlock in textToSend1){
                     tbs.AddTextBlock(textBlock);
@@ -91,6 +94,7 @@ public class MorrieBossScript : MonoBehaviour
     {
         if (other.gameObject.GetComponent<MoveOverTime>() != null){
             GetComponent<Animator>().SetTrigger("hurt");
+            AudioHandlerScript.PlayClipAtPoint("DoorOpening", "DoorOpening", 3f, transform.position);
             hurtCounter++;
         }
     }

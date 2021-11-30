@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Platformer.Mechanics;
 
@@ -11,6 +12,7 @@ public class MissionManagerScript : MonoBehaviour
     public GameObject[] missionNames;
     public float selectedHeight;
     public float selectDelay;
+    public Text passcodeText;
     public TextboxScript.TextBlock[] textToSend1;
     int index = 0;
     float[] startingHeights;
@@ -32,6 +34,13 @@ public class MissionManagerScript : MonoBehaviour
         }
         tbs = FindObjectOfType<TextboxScript>();
         alreadySent = false;
+        passcodeText.text = "-Passcode-\n" + PasscodeHandler.GetCurrentPasscode();
+
+        if (MissionManager.missionNumber == 3){
+            MissionManager.missionIndex = 3;
+            Health.currentHP = Health.maxHP;
+            SceneManager.LoadScene(MissionManager.GetMissionStart());
+        }
     }
 
     // Update is called once per frame
@@ -45,6 +54,7 @@ public class MissionManagerScript : MonoBehaviour
             canPressVert = true;
         }
         if (canPressVert && Input.GetAxis("Vertical") > 0){
+            AudioHandlerScript.PlaySound("MenuScroll", 1f);
             canPressVert = false;
             do {
                 index--;
@@ -54,6 +64,7 @@ public class MissionManagerScript : MonoBehaviour
             } while (MissionManager.IsMissionBeaten(index));
         }
         if (canPressVert && Input.GetAxis("Vertical") < 0){
+            AudioHandlerScript.PlaySound("MenuScroll", 1f);
             canPressVert = false;
             do {
                 index++;
@@ -90,7 +101,8 @@ public class MissionManagerScript : MonoBehaviour
         }
 
         //reminder: remove index == 0 once more content is in
-        if (Input.GetButtonDown("Fire1") && delay == 0f && index == 0 && counter > 0.4f){
+        if (Input.GetButtonDown("Fire1") && delay == 0f && counter > 0.4f){
+            AudioHandlerScript.PlaySound("MenuSelect", 1f);
             MissionManager.missionIndex = index;
             missionNames[index].SetActive(true);
             delay += Time.deltaTime;

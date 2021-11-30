@@ -6,6 +6,7 @@ using Platformer.Mechanics;
 public class Midpoint1_2_Cut : MonoBehaviour
 {
     int mode;
+    public AudioSource musicPlayer;
     public TextboxScript.TextBlock[] textToSend1;
     public TextboxScript.TextBlock[] textToSend2;
     public GameObject door;
@@ -38,6 +39,7 @@ public class Midpoint1_2_Cut : MonoBehaviour
             foreach (TextboxScript.TextBlock textBlock in textToSend1){
                 tbs.AddTextBlock(textBlock);
             }
+            musicPlayer.Stop();
             mode = 1;
         } else if (mode == 1){
             if (tbs.IsEmpty()){

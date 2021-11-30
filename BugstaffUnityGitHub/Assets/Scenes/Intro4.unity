@@ -1393,6 +1393,8 @@ MonoBehaviour:
   switchDelay2: 1
   switchDelay3: 2
   nextScene: MissionSelect
+  musicPlayer: {fileID: 1754240611}
+  insideClip: {fileID: 8300000, guid: 8a6ab2b8c412a4889814ccd44beb91da, type: 3}
   textToSend1:
   - speakerName: Alena
     text: Those sounds... those smells...
@@ -2106,7 +2108,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 5833894e2899f1840ac04193ca462e39, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 1df911f2951814682b58a6d4c831410e, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.334
   m_Pitch: 1

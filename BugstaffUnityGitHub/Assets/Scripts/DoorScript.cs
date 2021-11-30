@@ -33,6 +33,7 @@ public class DoorScript : MonoBehaviour
             go.GetComponent<DoorHelper>().yPosLoad = yPosLoad;
             go.GetComponent<DoorHelper>().loadDirection = loadDirection;
             go.GetComponent<DoorHelper>().loadedScene = sceneToLoad;
+            AudioHandlerScript.PlayClipAtPoint("DoorClosing", "DoorClosing", 1f, transform.position);
             SceneManager.LoadScene(sceneToLoad);
         }
     }

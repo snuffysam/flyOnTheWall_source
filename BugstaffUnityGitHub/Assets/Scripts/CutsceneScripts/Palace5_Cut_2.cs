@@ -5,6 +5,8 @@ using UnityEngine;
 public class Palace5_Cut_2 : MonoBehaviour
 {
     public GameObject morrie;
+    public AudioSource musicPlayer;
+    public AudioClip bossClip;
     public TextboxScript.TextBlock[] textToSend1;
     int mode;
     TextboxScript tbs;
@@ -26,9 +28,14 @@ public class Palace5_Cut_2 : MonoBehaviour
                 tbs.AddTextBlock(textBlock);
             }
             mode = 2;
+            musicPlayer.Stop();
         } else if (mode == 2){
             if (tbs.IsEmpty()){
                 morrie.SetActive(true);
+                musicPlayer.clip = bossClip;
+                musicPlayer.pitch = AudioHandlerScript.bossMult;
+                musicPlayer.Play();
+                mode = 3;
             }
         }
     }

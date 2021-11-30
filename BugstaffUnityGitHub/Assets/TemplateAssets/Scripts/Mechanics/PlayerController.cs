@@ -15,10 +15,10 @@ namespace Platformer.Mechanics
     /// </summary>
     public class PlayerController : KinematicObject
     {
-        public static bool hasInvisibility = false;
-        public static bool hasExtraJumps = false;
-        public static bool hasPepperSpray = false;
-        public static bool hasBackJump = false;
+        public static bool hasInvisibility = true;
+        public static bool hasExtraJumps = true;
+        public static bool hasPepperSpray = true;
+        public static bool hasBackJump = true;
 
         public AudioClip jumpAudio;
         public AudioClip respawnAudio;
@@ -78,6 +78,22 @@ namespace Platformer.Mechanics
         private float indicatorTimer;
         private float indicatorMaxTimer = 0.05f;
 
+        TextboxScript tbs;
+
+        public static void ResetPowerups(){
+            PlayerController.hasInvisibility = false;
+            PlayerController.hasExtraJumps = false;
+            PlayerController.hasPepperSpray = false;
+            PlayerController.hasBackJump = false;
+        }
+
+        public static void AllPowerups(){
+            PlayerController.hasInvisibility = true;
+            PlayerController.hasExtraJumps = true;
+            PlayerController.hasPepperSpray = true;
+            PlayerController.hasBackJump = true;
+        }
+
         void Awake()
         {
             health = GetComponent<Health>();
@@ -94,6 +110,10 @@ namespace Platformer.Mechanics
 
         protected override void Update()
         {
+            if (tbs == null){
+                tbs = FindObjectOfType<TextboxScript>();
+            }
+
             if (controlEnabled)
             {
                 if (hasInvisibility){
@@ -193,14 +213,16 @@ namespace Platformer.Mechanics
                             go.GetComponent<SpriteRenderer>().flipX = spriteRenderer.flipX;
                         }
                         canFirePepperSpray = false;
-                    } else if (hasBackJump && Input.GetButtonDown("Fire3") && !animator.GetCurrentAnimatorStateInfo(0).IsName("BackJump_Character")){
+                    } else if (hasBackJump && Input.GetButtonDown("Fire3")){
                         animator.SetTrigger("backJump");
                         isBackJumping = true;
-                        GameObject go = Instantiate<GameObject>(reflectHandPrefab);
-                        if (spriteRenderer.flipX){
-                            go.transform.position = transform.position + new Vector3(0.75f*-1f, 0f);
-                        } else {
-                            go.transform.position = transform.position + new Vector3(0.75f*1f, 0f);
+                        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("BackJump_Character")){
+                            GameObject go = Instantiate<GameObject>(reflectHandPrefab);
+                            if (spriteRenderer.flipX){
+                                go.transform.position = transform.position + new Vector3(0.75f*-1f, 0f);
+                            } else {
+                                go.transform.position = transform.position + new Vector3(0.75f*1f, 0f);
+                            }
                         }
                     }
                 } else {
@@ -209,6 +231,9 @@ namespace Platformer.Mechanics
             }
             else
             {
+                currentlyInvisible = false;
+                isBackJumping = false;
+                invisTimer = 0f;
                 move.x = 0;
                 if (moveOverride.magnitude > 0){
                     move = moveOverride;
@@ -221,7 +246,7 @@ namespace Platformer.Mechanics
             animator.SetBool("chargingGun", chargingWeapon);
             animator.SetBool("invisibility", currentlyInvisible);
 
-            if (animator.GetCurrentAnimatorStateInfo(0).IsName("Player-Death") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f){
+            if (animator.GetCurrentAnimatorStateInfo(0).IsName("Player-Death") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f && tbs.IsEmpty()){
                 Respawn();
             }
 
@@ -229,9 +254,13 @@ namespace Platformer.Mechanics
             base.Update();
         }
 
-        void FireBug(){
+        public void FireBug(){
             weaponButton = false;
             chargingWeapon = false;
+
+            if (!controlEnabled){
+                fired = true;
+            }
 
             if (!fired){
                 fired = true;
@@ -246,6 +275,7 @@ namespace Platformer.Mechanics
                     bugShot.GetComponent<Rigidbody2D>().velocity = new Vector3(weaponCharge*25f, 0f, 0f);
                     bugShot.GetComponent<Rigidbody2D>().angularVelocity = -weaponCharge*1500f;
                 }
+                AudioHandlerScript.PlayClipAtPoint("MenuScroll", "MenuScroll", 0.8f, transform.position);
             }
 
             bugChargeVisual.SetActive(false);
@@ -377,6 +407,8 @@ namespace Platformer.Mechanics
             }
             if (!animator.GetBool("dead") && !animator.GetCurrentAnimatorStateInfo(0).IsName("Player-Death")){
                 animator.SetTrigger("hurt");
+                AudioHandlerScript.PlayClipAtPoint("EnemyFootstepsBugvision8", "EnemyFootstepsBugvision8", 0.8f, transform.position);
+                //AudioHandlerScript.PlayClipAtPoint("MenuScroll", "MenuScroll", 0.8f, transform.position);
             }
         }
     }

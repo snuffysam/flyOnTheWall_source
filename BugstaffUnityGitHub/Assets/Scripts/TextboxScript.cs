@@ -19,12 +19,14 @@ public class TextboxScript : MonoBehaviour
     Vector2 startPos;
     private PlayerController playerController;
     bool resetControls = false;
+    float resetCount;
     // Start is called before the first frame update
     void Start()
     {
         blocks = new Queue<TextBlock>();
         startPos = GetComponent<RectTransform>().anchoredPosition;
         playerController = FindObjectOfType<PlayerController>();
+        resetCount = 0f;
 
         //AddTextBlock(new TextBlock{speakerName = "Alena", text = "I can't believe I ate the whole thing.", emphasis = false});
         //AddTextBlock(new TextBlock{speakerName = "Alena", text = "Seriously?!", emphasis = true});
@@ -34,12 +36,16 @@ public class TextboxScript : MonoBehaviour
     void Update()
     {
         if (mode == 0){
+            if (!resetControls && playerController != null){
+                playerController.controlEnabled = false;
+            }
+            resetCount += Time.deltaTime;
             if (GetComponent<RectTransform>().localScale.x > 0f){
                 Vector3 tmp = GetComponent<RectTransform>().localScale;
                 tmp.x = tmp.x-Time.deltaTime*3f;
                 GetComponent<RectTransform>().localScale = tmp;
             } else {
-                if (!resetControls && playerController != null){
+                if (!resetControls && playerController != null && resetCount > 0.5f){
                     resetControls = true;
                     playerController.controlEnabled = true;
                 }
@@ -54,6 +60,7 @@ public class TextboxScript : MonoBehaviour
                 mode = 1;
             }
         } else if (mode == 1){
+            resetCount = 0f;
             if (playerController != null){
                 playerController.controlEnabled = false;
             }
@@ -66,12 +73,13 @@ public class TextboxScript : MonoBehaviour
                 tmp.x = 1f;
                 GetComponent<RectTransform>().localScale = tmp;
                 bool emphasize = blocks.Peek().emphasis;
+                string speakerNamePeek = blocks.Peek().speakerName;
                 if (emphasize){
                     mode = 3;
                     dialogueName.SetActive(true);
                     emphasizedText.SetActive(true);
                     dialogueText.SetActive(false);
-                    dialogueName.GetComponent<Text>().text = blocks.Peek().speakerName;
+                    dialogueName.GetComponent<Text>().text = speakerNamePeek;
                     emphasizedText.GetComponent<Text>().text = blocks.Peek().text;
                     shakeTimer = 0f;
                     totalShakeTimer = 0f;
@@ -81,13 +89,17 @@ public class TextboxScript : MonoBehaviour
                     dialogueText.SetActive(true);
                     emphasizedText.SetActive(false);
                     dialogueText.GetComponent<Text>().text = "";
-                    dialogueName.GetComponent<Text>().text = blocks.Peek().speakerName;
+                    dialogueName.GetComponent<Text>().text = speakerNamePeek;
                     letterTimer = 0f;
                 }
+                AudioHandlerScript.PlayDialogue(speakerNamePeek, emphasize);
             }
         } else if (mode == 2){
             letterTimer += Time.deltaTime;
             string str = blocks.Peek().text;
+            if (playerController != null){
+                playerController.controlEnabled = false;
+            }
             if (letterTimer > maxLetterTimer){
                 dialogueText.GetComponent<Text>().text += str[dialogueText.GetComponent<Text>().text.Length];
                 letterTimer = 0f;
@@ -101,6 +113,9 @@ public class TextboxScript : MonoBehaviour
         } else if (mode == 3){
             shakeTimer += Time.deltaTime;
             totalShakeTimer += Time.deltaTime;
+            if (playerController != null){
+                playerController.controlEnabled = false;
+            }
             if (shakeTimer > maxShakeTimer){
                 shakeTimer = 0f;
                 GetComponent<RectTransform>().anchoredPosition = startPos + new Vector2(UnityEngine.Random.Range(-30f, 30f), UnityEngine.Random.Range(-30f, 30f));
@@ -110,6 +125,10 @@ public class TextboxScript : MonoBehaviour
                 mode = 4;
             }
         } else if (mode == 4){
+            if (playerController != null){
+                playerController.controlEnabled = false;
+            }
+            AudioHandlerScript.StopDialogue();
             if (Input.GetButtonDown("Fire1")){
                 blocks.Dequeue();
                 if (blocks.Count > 0){

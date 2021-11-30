@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1957865378239498779}
   - component: {fileID: 4509692974783393720}
   - component: {fileID: 6500064197116740261}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ReflectHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 80964907466964ffdb5ac03a590ade69, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

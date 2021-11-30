@@ -15,6 +15,8 @@ public class Intro4_Cut : MonoBehaviour
     public float switchDelay2;
     public float switchDelay3;
     public string nextScene;
+    public AudioSource musicPlayer;
+    public AudioClip insideClip;
     public TextboxScript.TextBlock[] textToSend1;
     public TextboxScript.TextBlock[] textToSend2;
     public TextboxScript.TextBlock[] textToSend3;
@@ -29,6 +31,9 @@ public class Intro4_Cut : MonoBehaviour
     {
         mode = 0;
         tbs = FindObjectOfType<TextboxScript>();
+        if (PasscodeHandler.hardcore){
+            textToSend3[14] = new TextboxScript.TextBlock{speakerName = "?????", text = "A blind woman in a bikini washes up on the beach and you arrest her?!?! Give her the cane back, you blockhead! And get a towel!", emphasis = false};
+        }
     }
 
     // Update is called once per frame
@@ -42,6 +47,10 @@ public class Intro4_Cut : MonoBehaviour
             foreach (TextboxScript.TextBlock textBlock in textToSend1){
                 tbs.AddTextBlock(textBlock);
             }
+            BugShotScript[] bss = FindObjectsOfType<BugShotScript>();
+            for (int i = 0; i < bss.Length; i++){
+                Destroy(bss[i].gameObject);
+            }
             mode = 2;
         } else if (mode == 2){
             player.controlEnabled = false;
@@ -51,11 +60,16 @@ public class Intro4_Cut : MonoBehaviour
                 foreach (TextboxScript.TextBlock textBlock in textToSend2){
                     tbs.AddTextBlock(textBlock);
                 }
+                BugShotScript[] bss = FindObjectsOfType<BugShotScript>();
+                for (int i = 0; i < bss.Length; i++){
+                    Destroy(bss[i].gameObject);
+                }
                 mode = 3;
             }
         } else if (mode == 3){
             player.controlEnabled = false;
             if (tbs.IsEmpty()){
+                musicPlayer.Stop();
                 if (listeners == null){
                     listeners = FindObjectsOfType<FollowScript>();
                     foreach (FollowScript fs in listeners){
@@ -69,6 +83,12 @@ public class Intro4_Cut : MonoBehaviour
                     }
                     delay = 0f;
                     mode = 4;
+                    BugShotScript[] bss = FindObjectsOfType<BugShotScript>();
+                    for (int i = 0; i < bss.Length; i++){
+                        Destroy(bss[i].gameObject);
+                    }
+                    musicPlayer.clip = insideClip;
+                    musicPlayer.Play();
                 }
             }
         } else if (mode == 4){
@@ -88,6 +108,10 @@ public class Intro4_Cut : MonoBehaviour
                     }
                     delay = 0f;
                     mode = 5;
+                    BugShotScript[] bss = FindObjectsOfType<BugShotScript>();
+                    for (int i = 0; i < bss.Length; i++){
+                        Destroy(bss[i].gameObject);
+                    }
                 }
             }
         } else if (mode == 5){
@@ -103,6 +127,10 @@ public class Intro4_Cut : MonoBehaviour
                     player.GetComponent<SpriteRenderer>().flipX = true;
                     oruma.GetComponent<Animator>().SetFloat("velocityX", 0f);
                     mode = 6;
+                    BugShotScript[] bss = FindObjectsOfType<BugShotScript>();
+                    for (int i = 0; i < bss.Length; i++){
+                        Destroy(bss[i].gameObject);
+                    }
                 }
             }
         } else if (mode == 6){

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NightModeToggle : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class NightModeToggle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("NightMode")){
+        if (Input.GetButtonDown("NightMode") && !SceneManager.GetActiveScene().name.Equals("TitleScreen")){
             nightMode = !nightMode;
         }
 
@@ -37,18 +38,18 @@ public class NightModeToggle : MonoBehaviour
 
         if (count > 0){
             count--;
-        //delete audio listeners
-        AudioListener[] als = FindObjectsOfType<AudioListener>();
-        for (int i = 0; i < als.Length; i++){
-            als[i].enabled = false;
-            Destroy(als[i]);
-        }
-        //delete audio listeners
-        AudioSource[] aus = FindObjectsOfType<AudioSource>();
-        for (int i = 0; i < aus.Length; i++){
-            aus[i].enabled = false;
-            Destroy(aus[i]);
-        }
+            //delete audio listeners
+            AudioListener[] als = FindObjectsOfType<AudioListener>();
+            for (int i = 0; i < als.Length; i++){
+                als[i].enabled = true;
+                //Destroy(als[i]);
+            }
+            //delete audio listeners
+            /*AudioSource[] aus = FindObjectsOfType<AudioSource>();
+            for (int i = 0; i < aus.Length; i++){
+                aus[i].enabled = false;
+                Destroy(aus[i]);
+            }*/
         }
     }
 }

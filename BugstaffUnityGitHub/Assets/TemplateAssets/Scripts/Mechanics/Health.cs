@@ -78,5 +78,11 @@ namespace Platformer.Mechanics
                 heartsObtained = new List<string>();
             }
         }
+
+        public static void ResetHearts(){
+            heartsObtained = new List<string>();
+            maxHP = 1;
+            currentHP = 1;
+        }
     }
 }

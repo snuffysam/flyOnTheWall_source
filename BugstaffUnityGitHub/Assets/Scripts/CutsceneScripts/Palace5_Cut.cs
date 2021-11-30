@@ -16,6 +16,8 @@ public class Palace5_Cut : MonoBehaviour
     {
         mode = 0;
         tbs = FindObjectOfType<TextboxScript>();
+        guardMessenger.GetComponent<Rigidbody2D>().gravityScale = 0f;
+        guardMessenger.GetComponent<Collider2D>().enabled = false;
     }
 
     // Update is called once per frame

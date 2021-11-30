@@ -40,6 +40,7 @@ public class ButtonActivateMoveScript : ButtonActivateScript
     public override void ExecuteButton(){
         base.ExecuteButton();
         if (mode == 0){
+            AudioHandlerScript.PlayClipAtPoint("DoorOpening", "DoorOpening", 1f, transform.position);
             mode = 1;
         }
     }

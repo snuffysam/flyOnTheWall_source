@@ -7,6 +7,7 @@ public class OscillateScript : MonoBehaviour
     public float period;
     public float minX;
     public float maxX;
+    public bool vertical;
     float timer;
     float midPoint;
     float dist;
@@ -21,6 +22,12 @@ public class OscillateScript : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        transform.position = new Vector3(midPoint+(Mathf.Sin(timer/period)*dist), transform.position.y, transform.position.z);
+        midPoint = (minX+maxX)/2f;
+        dist = (maxX-minX)/2f;
+        if (vertical){
+            transform.position = new Vector3(transform.position.x, midPoint+(Mathf.Sin(timer/period)*dist), transform.position.z);
+        } else {
+            transform.position = new Vector3(midPoint+(Mathf.Sin(timer/period)*dist), transform.position.y, transform.position.z);
+        }
     }
 }

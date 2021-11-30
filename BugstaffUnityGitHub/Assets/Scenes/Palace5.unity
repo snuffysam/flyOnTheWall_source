@@ -376,6 +376,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   morrie: {fileID: 3903569375676631372}
+  musicPlayer: {fileID: 1754240611}
+  bossClip: {fileID: 8300000, guid: 0111c44f7d5a24dd1940db8cc8aa1af4, type: 3}
   textToSend1:
   - speakerName: Guard
     text: You idiot!!!
@@ -2652,7 +2654,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 5833894e2899f1840ac04193ca462e39, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 8a6ab2b8c412a4889814ccd44beb91da, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.334
   m_Pitch: 1
@@ -3387,7 +3389,7 @@ MonoBehaviour:
   sceneToLoad: Palace6
   xPosLoad: 1
   yPosLoad: -0.5
-  loadDirection: 0
+  loadDirection: 1
 --- !u!1001 &3903569375676631371
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3475,6 +3477,11 @@ PrefabInstance:
       propertyPath: doorSummon
       value: 
       objectReference: {fileID: 3639280797805548054}
+    - target: {fileID: 6861900782194505996, guid: b4b1141fd6b1e4d169812abbba52ed19,
+        type: 3}
+      propertyPath: musicPlayer
+      value: 
+      objectReference: {fileID: 1754240611}
     - target: {fileID: 6861900782194505996, guid: b4b1141fd6b1e4d169812abbba52ed19,
         type: 3}
       propertyPath: textToSend1.Array.size

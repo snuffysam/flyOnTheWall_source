@@ -8,15 +8,16 @@ public class MissionManager : MonoBehaviour
     public static int missionNumber = 0;
     public static int missionIndex = 0;
     public static string[] midpointRooms = {"Midpoint1", "Midpoint2", "Midpoint3", "Midpoint4"};
-    public static string[] missionReturn = {"Palace4", "Midpoint2", "Midpoint3", "Midpoint4"};
+    public static Vector2[] startPoints = {new Vector2(-1.4f,7.5f), new Vector2(-8.77f, -0.28f), new Vector2(-5f, 0.82f), new Vector2(-8.77f, -0.34f)};
+    public static bool[] startDirections = {true, false, false, false};
+    public static string[] missionStart = {"Palace1", "Airship1", "Casino1", "PalmGemRoom"};
+    public static string[] missionReturn = {"Palace4", "Airship3", "Casino4", "Midpoint4"};
     public static string[] charmNames = {"Spice", "Aroma", "Flash", "Palm"};
-    public static string[] charmTutorials = {"[Press Down Arrow to use the Spice Charm.]", "[Press Up mid-air to use the Aroma Charm.]", "Flash", "Palm"};
-    public static Vector2[] startPoints = {new Vector2(-1.4f,7.5f), Vector2.zero, Vector2.zero, Vector2.zero};
-    public static bool[] startDirections = {true, true, false, false};
-    public static Vector2[] returnPoints = {new Vector2(9.89f,-0.51f), Vector2.zero, Vector2.zero, Vector2.zero};
-    public static bool[] returnDirections = {true, true, false, false};
-    public static string[] missionStart = {"Palace1", "Midpoint2", "Midpoint3", "Midpoint4"};
+    public static string[] charmTutorials = {"[Press Down Arrow to use the Spice Charm.]", "[Press Up mid-air to use the Aroma Charm.]", "[Stand still to use the Flash Charm.]", "Palm"};
+    public static Vector2[] returnPoints = {new Vector2(9.89f,-0.51f), new Vector2(-1.38f, 0f), new Vector2(-1.31f, 5.15f), Vector2.zero};
+    public static bool[] returnDirections = {true, false, true, false};
     public static int completed;
+    public static bool beatPalmMission;
     // Start is called before the first frame update
     void Start()
     {

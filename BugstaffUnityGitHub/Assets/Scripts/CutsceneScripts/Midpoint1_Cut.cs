@@ -8,6 +8,8 @@ public class Midpoint1_Cut : MonoBehaviour
     public GameObject player;
     public GameObject redAdmiral;
     public GameObject redAdmiralBoss;
+    public AudioSource musicPlayer;
+    public AudioClip bossClip;
     public TextboxScript.TextBlock[] textToSend1;
     public TextboxScript.TextBlock[] textToSend2;
     int mode;
@@ -59,6 +61,9 @@ public class Midpoint1_Cut : MonoBehaviour
                 player.GetComponent<PlayerController>().controlEnabled = true;
                 redAdmiral.SetActive(false);
                 redAdmiralBoss.SetActive(true);
+                musicPlayer.clip = bossClip;
+                musicPlayer.pitch = AudioHandlerScript.bossMult;
+                musicPlayer.Play();
                 mode = 5;
             }
         }

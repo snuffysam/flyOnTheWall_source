@@ -1181,7 +1181,7 @@ Transform:
   m_LocalScale: {x: 4, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &338553553
 BoxCollider2D:
@@ -1513,7 +1513,7 @@ Transform:
   m_LocalScale: {x: 3, y: 30, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
@@ -1727,114 +1727,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &766488636
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 766488638}
-  - component: {fileID: 766488637}
-  - component: {fileID: 766488639}
-  m_Layer: 0
-  m_Name: OpeningDialogue
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!61 &766488637
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 766488636}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
---- !u!4 &766488638
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 766488636}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.41, y: 4.51, z: 0}
-  m_LocalScale: {x: 4, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 21
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &766488639
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 766488636}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05dd659688e294b668e6aa0d8c2e0590, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  delay: 2
-  textToSend:
-  - speakerName: Oruma
-    text: Fly On The Wall? This is Oruma, do you copy?
-    emphasis: 0
-  - speakerName: Alena
-    text: Um- loud and clear!
-    emphasis: 0
-  - speakerName: Oruma
-    text: Good. Now, pay close attention. This is the most important mission of your
-      life.
-    emphasis: 0
-  - speakerName: Oruma
-    text: You will be infiltrating Empress Silque's grand palace. All our intel points
-      to her organizing a meeting with her top war advisors today.
-    emphasis: 0
-  - speakerName: Oruma
-    text: Your mission is to listen in on this meeting. Empress Silque's car arrives
-      in 30 seconds, at which point the palace gates will be unlocked.
-    emphasis: 0
-  - speakerName: Oruma
-    text: The door to the meeting room will also be unlocked at that time, so the
-      advisors can begin to make their way inside.
-    emphasis: 0
-  - speakerName: Oruma
-    text: This means you have a five minute window to make it to the meeting room
-      and bug it before Empress Silque enters the room and the doors are locked.
-    emphasis: 0
-  - speakerName: Oruma
-    text: The fate of the entire island of Tadalet could depend on this. Do you understand,
-      Fly On The Wall?
-    emphasis: 0
-  - speakerName: Alena
-    text: Yes.
-    emphasis: 0
-  - speakerName: Oruma
-    text: Good. Begin preparing for your pursuit.
-    emphasis: 0
 --- !u!1 &865827604
 GameObject:
   m_ObjectHideFlags: 0
@@ -2040,6 +1932,7 @@ MonoBehaviour:
   period: 2
   minX: -12.3
   maxX: -7.55
+  vertical: 0
 --- !u!212 &935673378
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2103,7 +1996,7 @@ Transform:
   m_LocalScale: {x: 3, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 29
+  m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &985152955
 GameObject:
@@ -2321,7 +2214,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 25
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1021260327
 GameObject:
@@ -2561,7 +2454,7 @@ Transform:
   m_LocalScale: {x: 3, y: 15, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 26
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1244844997
 GameObject:
@@ -2644,7 +2537,7 @@ Transform:
   m_LocalScale: {x: 50, y: 30, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1271746233
 GameObject:
@@ -2753,7 +2646,7 @@ Transform:
   m_LocalScale: {x: 5, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 27
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1361123691
 GameObject:
@@ -2862,7 +2755,7 @@ Transform:
   m_LocalScale: {x: 5, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 28
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1398179753
 GameObject:
@@ -2897,6 +2790,7 @@ MonoBehaviour:
   period: 4
   minX: -13.1
   maxX: -6.7
+  vertical: 0
 --- !u!212 &1398179755
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2960,7 +2854,7 @@ Transform:
   m_LocalScale: {x: 3.3, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 31
+  m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1479362596
 PrefabInstance:
@@ -3138,7 +3032,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 5833894e2899f1840ac04193ca462e39, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 022e0ccfbb5644b949f4d6a9d775c8b8, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.334
   m_Pitch: 1
@@ -3257,6 +3151,7 @@ MonoBehaviour:
   period: 3
   minX: -11.1
   maxX: -8.7
+  vertical: 0
 --- !u!212 &1790809001
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3320,7 +3215,7 @@ Transform:
   m_LocalScale: {x: 2.5, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 30
+  m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1815240771
 PrefabInstance:

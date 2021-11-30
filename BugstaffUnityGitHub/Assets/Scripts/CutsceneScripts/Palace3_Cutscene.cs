@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Platformer.Mechanics;
 
 public class Palace3_Cutscene : MonoBehaviour
 {
@@ -12,11 +13,13 @@ public class Palace3_Cutscene : MonoBehaviour
     public TextboxScript.TextBlock[] textToSend3;
     int mode;
     TextboxScript tbs;
+    PlayerController player;
     // Start is called before the first frame update
     void Start()
     {
         mode = 0;
         tbs = FindObjectOfType<TextboxScript>();
+        player = FindObjectOfType<PlayerController>();
     }
 
     // Update is called once per frame
@@ -25,7 +28,11 @@ public class Palace3_Cutscene : MonoBehaviour
         if (tbs == null){
             tbs = FindObjectOfType<TextboxScript>();
         }
+        if (player == null){
+            player = FindObjectOfType<PlayerController>();
+        }
         if (mode == 1){
+            player.controlEnabled = false;
             empress.GetComponent<Rigidbody2D>().velocity = new Vector3(-1f, 0f, 0f);
             empress.GetComponent<Animator>().SetFloat("velocityX", 1f);
             arva.GetComponent<Rigidbody2D>().velocity = new Vector3(-1.05f, 0f, 0f);
@@ -35,6 +42,7 @@ public class Palace3_Cutscene : MonoBehaviour
             }
             mode = 2;
         } else if (mode == 2){
+            player.controlEnabled = false;
             if (empress.transform.position.x < 3f){
                 empress.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
                 empress.GetComponent<Animator>().SetFloat("velocityX", 0f);
@@ -52,6 +60,7 @@ public class Palace3_Cutscene : MonoBehaviour
                 }
             }
         } else if (mode == 3){
+            player.controlEnabled = false;
             if (guard.transform.position.x < 2.5f){
                 arva.GetComponent<Rigidbody2D>().velocity = new Vector3(-4f, 0f, 0f);
                 arva.GetComponent<Animator>().SetFloat("velocityX", 1f);

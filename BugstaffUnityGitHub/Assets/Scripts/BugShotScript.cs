@@ -20,6 +20,7 @@ public class BugShotScript : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("collided");
+        AudioHandlerScript.PlayClipAtPoint("MenuSelect", "MenuSelect", 0.8f, transform.position);
         GetComponent<Rigidbody2D>().velocity = Vector3.zero;
         GetComponent<Rigidbody2D>().angularVelocity = 0f;
         GetComponent<Rigidbody2D>().isKinematic = true;

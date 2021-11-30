@@ -65,6 +65,7 @@ public class PatrolScript : MonoBehaviour
                 if (shootPrefab != null){
                     GameObject go = Instantiate<GameObject>(shootPrefab);
                     go.transform.position = transform.position + new Vector3(shootXOffset*velMult, shootYOffset);
+                    AudioHandlerScript.PlayClipAtPoint("EnemyFootsteps6", "EnemyFootstepsBugvision6", 3f, go.transform.position);
                     if (go.GetComponent<SpriteRenderer>() != null){
                         go.GetComponent<SpriteRenderer>().flipX = GetComponent<SpriteRenderer>().flipX;
                     }
@@ -77,7 +78,7 @@ public class PatrolScript : MonoBehaviour
         Bounds b = GetComponent<BoxCollider2D>().bounds;
 
         RaycastHit2D rch2d = Physics2D.Raycast(new Vector2(b.center.x + (b.size.x*velMult*1.1f), b.center.y), new Vector2(viewDistance*velMult, 0f), viewDistance, lm);
-        if (rch2d.collider != null && rch2d.collider.GetComponent<PlayerController>() != null && !rch2d.collider.GetComponent<PlayerController>().IsInvisible()){
+        if (shootPrefab != null && rch2d.collider != null && rch2d.collider.GetComponent<PlayerController>() != null && !rch2d.collider.GetComponent<PlayerController>().IsInvisible()){
             state = 2;
             spotted = true;
         } else if (state == 2){

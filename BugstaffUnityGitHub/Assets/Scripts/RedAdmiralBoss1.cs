@@ -118,6 +118,7 @@ public class RedAdmiralBoss1 : MonoBehaviour
             }
         } else if (state == 2){
             if (!slashed && GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Slash") && GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime > 0.18f){
+                AudioHandlerScript.PlayClipAtPoint("EnemyFootsteps6", "EnemyFootstepsBugvision6", 1f, transform.position);
                 slashed = true;
                 if (rch2d.collider != null && rch2d.collider.GetComponent<PlayerController>() != null){
                     rch2d.collider.GetComponent<PlayerController>().GetComponent<Health>().Decrement();
@@ -139,6 +140,7 @@ public class RedAdmiralBoss1 : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.GetComponent<MoveOverTime>() != null){
+            AudioHandlerScript.PlayClipAtPoint("DoorClosing", "DoorClosing", 0.5f, transform.position);
             GetComponent<Animator>().SetTrigger("hurt");
             hurtCounter++;
         }

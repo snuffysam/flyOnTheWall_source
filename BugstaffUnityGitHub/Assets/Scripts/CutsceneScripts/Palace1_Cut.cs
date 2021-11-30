@@ -32,6 +32,7 @@ public class Palace1_Cut : MonoBehaviour
                     tbs.AddTextBlock(textBlock);
                 }
                 mode = 2;
+                AudioHandlerScript.PlayClipAtPoint("DoorClosing", "DoorClosing", 1f, limo.transform.position);
             }
         } else if (mode == 2){
             empress.transform.position = new Vector3(-5f, -0.6f, 0f);
@@ -55,6 +56,7 @@ public class Palace1_Cut : MonoBehaviour
                 guard.GetComponent<Rigidbody2D>().gravityScale = 0f;
                 guard.GetComponent<Collider2D>().enabled = false;
                 guard.GetComponent<SpriteRenderer>().flipX = true;
+                AudioHandlerScript.PlayClipAtPoint("DoorOpening", "DoorOpening", 1f, limo.transform.position);
                 mode = 4;
             }
         }
