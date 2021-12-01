@@ -152,7 +152,7 @@ public class AudioHandlerScript : MonoBehaviour
     }
 
     public static void PlayGunshotAtPoint(Vector3 location){
-        int n = UnityEngine.Random.Range(1,6);
+        int n = UnityEngine.Random.Range(1,5);
         
         FollowScript minListen = GetNearestListener(location);
         float volMult = GetVolumeScale(minListen, location);
@@ -166,7 +166,7 @@ public class AudioHandlerScript : MonoBehaviour
     }
 
     public static void PlayHitAtPoint(Vector3 location, int person){
-        int n = UnityEngine.Random.Range(1,6);
+        int n = UnityEngine.Random.Range(1,5);
         
         FollowScript minListen = GetNearestListener(location);
         float volMult = GetVolumeScale(minListen, location);
@@ -193,7 +193,7 @@ public class AudioHandlerScript : MonoBehaviour
     }
 
     public static void PlayDeathAtPoint(Vector3 location, int person){
-        int n = UnityEngine.Random.Range(1,6);
+        int n = UnityEngine.Random.Range(1,5);
         
         FollowScript minListen = GetNearestListener(location);
         float volMult = GetVolumeScale(minListen, location);

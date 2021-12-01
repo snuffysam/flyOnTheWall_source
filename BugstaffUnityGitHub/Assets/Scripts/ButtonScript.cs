@@ -10,6 +10,7 @@ public class ButtonScript : MonoBehaviour
     public Sprite activateSprite;
     public bool destroyBug;
     bool alreadyActivated;
+    bool alreadyPlayed;
     
     // Start is called before the first frame update
     void Start()
@@ -28,8 +29,12 @@ public class ButtonScript : MonoBehaviour
                     Destroy(bss[i].gameObject);
                 }
                 alreadyActivated = false;
+                alreadyPlayed = false;
             }
-            AudioHandlerScript.PlayClipAtPoint("ButtonClick", "ButtonClick", 1f, transform.position);
+            if (!alreadyPlayed){
+                alreadyPlayed = true;
+                AudioHandlerScript.PlayClipAtPoint("ButtonClick", "ButtonClick", 1f, transform.position);
+            }
             target.ExecuteButton();
         }
         if (alreadyActivated){
