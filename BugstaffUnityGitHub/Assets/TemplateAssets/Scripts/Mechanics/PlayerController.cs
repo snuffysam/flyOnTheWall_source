@@ -397,6 +397,7 @@ namespace Platformer.Mechanics
             if (!animator.GetBool("dead") && !animator.GetCurrentAnimatorStateInfo(0).IsName("Player-Death")){
                 animator.SetTrigger("hurt");
                 animator.SetBool("dead", true);
+                AudioHandlerScript.PlayDeathAtPoint(transform.position, 0);
             }
             //Simulation.Schedule<PlayerSpawn>(2);
         }
@@ -407,7 +408,7 @@ namespace Platformer.Mechanics
             }
             if (!animator.GetBool("dead") && !animator.GetCurrentAnimatorStateInfo(0).IsName("Player-Death")){
                 animator.SetTrigger("hurt");
-                AudioHandlerScript.PlayClipAtPoint("EnemyFootstepsBugvision8", "EnemyFootstepsBugvision8", 0.8f, transform.position);
+                AudioHandlerScript.PlayHitAtPoint(transform.position, 0);
                 //AudioHandlerScript.PlayClipAtPoint("MenuScroll", "MenuScroll", 0.8f, transform.position);
             }
         }
