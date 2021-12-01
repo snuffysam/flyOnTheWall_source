@@ -53,6 +53,8 @@ public class Casino5_Cut_2 : MonoBehaviour
             if (tbs.IsEmpty()){
                 cricketCutscene.GetComponent<Animator>().SetTrigger("dead");
                 mantisCutscene.GetComponent<Animator>().SetTrigger("dead");
+                AudioHandlerScript.PlayDeathAtPoint(cricketCutscene.transform.position, 2);
+                AudioHandlerScript.PlayDeathAtPoint(mantisCutscene.transform.position, 2);
                 mode = 2;
             }
         } else if (mode == 2){

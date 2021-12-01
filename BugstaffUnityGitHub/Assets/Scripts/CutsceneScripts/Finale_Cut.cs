@@ -125,6 +125,7 @@ public class Finale_Cut : MonoBehaviour
             player.controlEnabled = false;
             if (tbs.IsEmpty()){
                 if (soldier1alive.activeInHierarchy){
+                    AudioHandlerScript.PlayHitAtPoint(soldier1alive.transform.position, 4);
                     AudioHandlerScript.PlayClipAtPoint("EnemyFootsteps6", "EnemyFootstepsBugvision6", 1f, soldier1alive.transform.position);
                 }
                 soldier1alive.SetActive(false);
@@ -141,7 +142,8 @@ public class Finale_Cut : MonoBehaviour
                     foreach (TextboxScript.TextBlock textBlock in textToSend5){
                         tbs.AddTextBlock(textBlock);
                     }
-                    AudioHandlerScript.PlayClipAtPoint("EnemyFootstepsBugvision8", "EnemyFootstepsBugvision8", 0.8f, transform.position);
+                    AudioHandlerScript.PlayDeathAtPoint(soldier1alive.transform.position, 4);
+                    //AudioHandlerScript.PlayClipAtPoint("EnemyFootstepsBugvision8", "EnemyFootstepsBugvision8", 0.8f, transform.position);
                     mode = 7;
                 }
             }
@@ -149,6 +151,7 @@ public class Finale_Cut : MonoBehaviour
             player.controlEnabled = false;
             if (tbs.IsEmpty()){
                 if (soldier2alive.activeInHierarchy){
+                    AudioHandlerScript.PlayHitAtPoint(soldier2alive.transform.position, 4);
                     AudioHandlerScript.PlayClipAtPoint("EnemyFootsteps6", "EnemyFootstepsBugvision6", 1f, soldier1alive.transform.position);
                 }
                 soldier2alive.SetActive(false);
@@ -162,7 +165,8 @@ public class Finale_Cut : MonoBehaviour
                     delay = 0f;
                     soldier2hurt.transform.eulerAngles = new Vector3(0f, 0f, -90f);
                     soldier2hurt.transform.position = new Vector3(soldier2hurt.transform.position.x, -1.06f, soldier2hurt.transform.position.z);
-                    AudioHandlerScript.PlayClipAtPoint("EnemyFootstepsBugvision8", "EnemyFootstepsBugvision8", 0.8f, transform.position);
+                    AudioHandlerScript.PlayDeathAtPoint(soldier2alive.transform.position, 4);
+                    //AudioHandlerScript.PlayClipAtPoint("EnemyFootstepsBugvision8", "EnemyFootstepsBugvision8", 0.8f, transform.position);
                     mode = 8;
                 }
             }
@@ -176,6 +180,7 @@ public class Finale_Cut : MonoBehaviour
                 }
                 delay = 0f;
                 herculesStanding.SetActive(true);
+                AudioHandlerScript.PlayHitAtPoint(herculesStanding.transform.position, 4);
                 AudioHandlerScript.PlayClipAtPoint("EnemyFootsteps6", "EnemyFootstepsBugvision6", 1f, soldier1alive.transform.position);
                 player.transform.position += Vector3.right*-0.3f;
                 redAdmiral.transform.position = player.transform.position + Vector3.right*0.4f;
@@ -204,7 +209,8 @@ public class Finale_Cut : MonoBehaviour
             redAdmiral.GetComponent<Rigidbody2D>().velocity = new Vector3(5f, 0f, 0f);
             if (tbs.IsEmpty()){
                 if (herculesStanding.activeInHierarchy){
-                    AudioHandlerScript.PlayClipAtPoint("EnemyFootstepsBugvision8", "EnemyFootstepsBugvision8", 0.8f, transform.position);
+                    AudioHandlerScript.PlayDeathAtPoint(herculesStanding.transform.position, 4);
+                    //AudioHandlerScript.PlayClipAtPoint("EnemyFootstepsBugvision8", "EnemyFootstepsBugvision8", 0.8f, transform.position);
                 }
                 herculesStanding.SetActive(false);
                 herculesGround.SetActive(true);

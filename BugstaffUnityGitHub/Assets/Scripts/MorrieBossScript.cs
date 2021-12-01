@@ -49,7 +49,7 @@ public class MorrieBossScript : MonoBehaviour
             GetComponent<Rigidbody2D>().velocity = new Vector3(speed*velMult, 0f, 0f);
             if (transform.position.x > minX){
                 mode = 1;
-                AudioHandlerScript.PlayClipAtPoint("DoorOpening", "DoorOpening", 3f, transform.position);
+                AudioHandlerScript.PlayClipAtPoint("DoorOpening", "DoorOpening", 3f, transform.position, 0.5f);
                 GetComponent<Animator>().SetTrigger("hurt");
             }
         } else if (mode == 1){
@@ -94,7 +94,7 @@ public class MorrieBossScript : MonoBehaviour
     {
         if (other.gameObject.GetComponent<MoveOverTime>() != null){
             GetComponent<Animator>().SetTrigger("hurt");
-            AudioHandlerScript.PlayClipAtPoint("DoorOpening", "DoorOpening", 3f, transform.position);
+            AudioHandlerScript.PlayClipAtPoint("DoorOpening", "DoorOpening", 3f, transform.position, 0.5f);
             hurtCounter++;
         }
     }

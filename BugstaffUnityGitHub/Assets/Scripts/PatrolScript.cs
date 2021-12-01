@@ -19,6 +19,7 @@ public class PatrolScript : MonoBehaviour
     float waitTimer;
     float shootTimer;
     int state;
+    bool alreadyHurt;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,8 +38,13 @@ public class PatrolScript : MonoBehaviour
 
         if (GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Hurt")){
             GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+            if (!alreadyHurt){
+                alreadyHurt = true;
+                AudioHandlerScript.PlayHitAtPoint(transform.position, 4);
+            }
             return;
         }
+        alreadyHurt = false;
 
         if (state == 0){
             waitTimer += Time.deltaTime;
@@ -65,7 +71,7 @@ public class PatrolScript : MonoBehaviour
                 if (shootPrefab != null){
                     GameObject go = Instantiate<GameObject>(shootPrefab);
                     go.transform.position = transform.position + new Vector3(shootXOffset*velMult, shootYOffset);
-                    AudioHandlerScript.PlayClipAtPoint("EnemyFootsteps6", "EnemyFootstepsBugvision6", 3f, go.transform.position);
+                    AudioHandlerScript.PlayGunshotAtPoint(go.transform.position);
                     if (go.GetComponent<SpriteRenderer>() != null){
                         go.GetComponent<SpriteRenderer>().flipX = GetComponent<SpriteRenderer>().flipX;
                     }

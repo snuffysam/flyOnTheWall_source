@@ -117,7 +117,8 @@ public class OrumaBossScript2 : MonoBehaviour
     void OnCollisionEnter2D(Collision2D col)
     {
         if (mode < 3 && col.gameObject.GetComponent<DealDamageScript>() != null && col.gameObject.GetComponent<DealDamageScript>().playerOwned){
-            AudioHandlerScript.PlayClipAtPoint("DoorClosing", "DoorClosing", 0.5f, transform.position);
+            //AudioHandlerScript.PlayHitAtPoint(transform.position, 3);
+            AudioHandlerScript.PlayDeathAtPoint(transform.position, 3);
             delay = 0f;
             mode = 3;
         }

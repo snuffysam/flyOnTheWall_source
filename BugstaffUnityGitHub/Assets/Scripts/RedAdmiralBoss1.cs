@@ -140,7 +140,8 @@ public class RedAdmiralBoss1 : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.GetComponent<MoveOverTime>() != null){
-            AudioHandlerScript.PlayClipAtPoint("DoorClosing", "DoorClosing", 0.5f, transform.position);
+            //AudioHandlerScript.PlayClipAtPoint("DoorClosing", "DoorClosing", 0.5f, transform.position);
+            AudioHandlerScript.PlayHitAtPoint(transform.position, 1);
             GetComponent<Animator>().SetTrigger("hurt");
             hurtCounter++;
         }

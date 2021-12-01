@@ -32,6 +32,10 @@ public class AudioHandlerScript : MonoBehaviour
     }
 
     public static void PlaySound(string key, float volume){
+        PlaySound(key, volume, 1f);
+    }
+
+    public static void PlaySound(string key, float volume, float speed){
         if (!clipsRef.ContainsKey(key)){
             return;
         }
@@ -67,6 +71,7 @@ public class AudioHandlerScript : MonoBehaviour
         if (key.Contains("Computer")){
             Debug.Log("playing key: " + key);
         }
+        audioSource.pitch = speed;
         audioSource.PlayOneShot(clipsRef[key],vol);
     }
 
@@ -120,6 +125,10 @@ public class AudioHandlerScript : MonoBehaviour
     }
 
     public static void PlayClipAtPoint(string clipNormal, string clipBugvision, float volume, Vector3 location){
+        PlayClipAtPoint(clipNormal, clipBugvision, volume, location, 1f);
+    }
+
+    public static void PlayClipAtPoint(string clipNormal, string clipBugvision, float volume, Vector3 location, float speed){
         if (clipNormal.Contains("Computer")){
             Debug.Log(clipNormal + " looking for volume");
         }
@@ -139,7 +148,75 @@ public class AudioHandlerScript : MonoBehaviour
             Debug.Log(str + " about to play");
         }
 
-        PlaySound(str, volMult*volume);
+        PlaySound(str, volMult*volume, speed);
+    }
+
+    public static void PlayGunshotAtPoint(Vector3 location){
+        int n = UnityEngine.Random.Range(1,6);
+        
+        FollowScript minListen = GetNearestListener(location);
+        float volMult = GetVolumeScale(minListen, location);
+        if (volMult <= 0f){
+            return;
+        }
+
+        string str = "Gunshot" + n;
+
+        PlaySound(str, volMult);
+    }
+
+    public static void PlayHitAtPoint(Vector3 location, int person){
+        int n = UnityEngine.Random.Range(1,6);
+        
+        FollowScript minListen = GetNearestListener(location);
+        float volMult = GetVolumeScale(minListen, location);
+        if (volMult <= 0f){
+            return;
+        }
+
+        float speed = 1f;
+        if (person == 0){//alena
+            speed = 1f;
+        } else if (person == 1){//vanessa
+            speed = 0.9f;
+        } else if (person == 2){//twins
+            speed = 1.4f;
+        } else if (person == 3){//oruma
+            speed = 1.15f;
+        } else if (person == 4){//soldier
+            speed = UnityEngine.Random.Range(0.6f, 0.8f);
+        }
+
+        string str = "Hit" + n;
+
+        PlaySound(str, volMult, speed);
+    }
+
+    public static void PlayDeathAtPoint(Vector3 location, int person){
+        int n = UnityEngine.Random.Range(1,6);
+        
+        FollowScript minListen = GetNearestListener(location);
+        float volMult = GetVolumeScale(minListen, location);
+        if (volMult <= 0f){
+            return;
+        }
+
+        float speed = 1f;
+        if (person == 0){//alena
+            speed = 1f;
+        } else if (person == 1){//vanessa
+            speed = 0.9f;
+        } else if (person == 2){//twins
+            speed = 1.4f;
+        } else if (person == 3){//oruma
+            speed = 1.15f;
+        } else if (person == 4){//soldier
+            speed = UnityEngine.Random.Range(0.6f, 0.8f);
+        }
+
+        string str = "Death" + n;
+
+        PlaySound(str, volMult, speed);
     }
 
     public static FollowScript GetNearestListener(Vector3 location){

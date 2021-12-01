@@ -936,6 +936,34 @@ MonoBehaviour:
     audio: {fileID: 8300000, guid: e8186992b954d4b6998b7611bc54a1a8, type: 3}
   - key: ComputerBeepingBugvision
     audio: {fileID: 8300000, guid: dc817d782c3544a8d84d25e17925526b, type: 3}
+  - key: ButtonClick
+    audio: {fileID: 8300000, guid: 3b332105f5c9c4b4c9f280cdcea78dc6, type: 3}
+  - key: Gunshot1
+    audio: {fileID: 8300000, guid: f566267ec212646ebbe45294f6439405, type: 3}
+  - key: Gunshot2
+    audio: {fileID: 8300000, guid: 5fbece68c5ab140d186a527b44eb991a, type: 3}
+  - key: Gunshot3
+    audio: {fileID: 8300000, guid: c91316bb25d234bb18ff9e2b35d4e5b9, type: 3}
+  - key: Gunshot4
+    audio: {fileID: 8300000, guid: 724f6fba0971a49d79375e121dccd008, type: 3}
+  - key: Gunshot5
+    audio: {fileID: 8300000, guid: 2d6ffa753bf6e42b9aad61c2ef6c3ffb, type: 3}
+  - key: Hit1
+    audio: {fileID: 8300000, guid: 92f672baacec8446794ba165c57a688c, type: 3}
+  - key: Hit2
+    audio: {fileID: 8300000, guid: faeea04390ec848b4a706f89e21e3c5e, type: 3}
+  - key: Hit3
+    audio: {fileID: 8300000, guid: 87605a8d21deb4df8b2f91abeb128013, type: 3}
+  - key: Hit4
+    audio: {fileID: 8300000, guid: b50a27f486cca4306bd90a8d16d0e5d7, type: 3}
+  - key: Death1
+    audio: {fileID: 8300000, guid: 937ce9b5fd2404475bd849df43373052, type: 3}
+  - key: Death2
+    audio: {fileID: 8300000, guid: 4c430a3177f304031a34e13598df1b3f, type: 3}
+  - key: Death3
+    audio: {fileID: 8300000, guid: 3eb93d013e5134d8780a0ca07cac0002, type: 3}
+  - key: Death4
+    audio: {fileID: 8300000, guid: d0874374013c94161bbdd90f0a064b0b, type: 3}
 --- !u!4 &885126755
 Transform:
   m_ObjectHideFlags: 0

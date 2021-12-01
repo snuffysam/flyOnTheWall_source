@@ -21,6 +21,7 @@ public class TwinsBossFight : MonoBehaviour
     float currentDelay;
     GameObject spawnedSpikeball;
     GameObject currentTarget;
+    bool alreadyHurt;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +32,10 @@ public class TwinsBossFight : MonoBehaviour
     void Update()
     {
         if (GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Hurt")){
+            if (!alreadyHurt){
+                alreadyHurt = true;
+                AudioHandlerScript.PlayHitAtPoint(transform.position, 2);
+            }
             targetOverlay.SetActive(false);
             if (spawnedSpikeball != null){
                 Destroy(spawnedSpikeball);
@@ -44,6 +49,9 @@ public class TwinsBossFight : MonoBehaviour
             mode = 0;
             return;
         }
+
+        alreadyHurt = false;
+
         if (mode == 0){
             targetOverlay.SetActive(false);
             if (IsLeft()){

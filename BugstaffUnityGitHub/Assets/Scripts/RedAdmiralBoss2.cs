@@ -48,7 +48,8 @@ public class RedAdmiralBoss2 : MonoBehaviour
         if (transform.position.x > turnMaxX || transform.position.x < turnMinX){
             GetComponent<Rigidbody2D>().velocity = Vector3.zero;
             GetComponent<Animator>().SetTrigger("hurt");
-            AudioHandlerScript.PlayClipAtPoint("DoorClosing", "DoorClosing", 0.5f, transform.position);
+            //AudioHandlerScript.PlayClipAtPoint("DoorClosing", "DoorClosing", 0.5f, transform.position);
+            AudioHandlerScript.PlayHitAtPoint(transform.position, 1);
             hurtCounter++;
             GetComponent<SpriteRenderer>().flipX = !GetComponent<SpriteRenderer>().flipX;
             if (transform.position.x > turnMaxX){

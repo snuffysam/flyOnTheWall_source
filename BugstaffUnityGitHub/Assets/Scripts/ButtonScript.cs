@@ -29,6 +29,7 @@ public class ButtonScript : MonoBehaviour
                 }
                 alreadyActivated = false;
             }
+            AudioHandlerScript.PlayClipAtPoint("ButtonClick", "ButtonClick", 1f, transform.position);
             target.ExecuteButton();
         }
         if (alreadyActivated){

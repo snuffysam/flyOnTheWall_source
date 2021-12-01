@@ -17,6 +17,6 @@ public class EnemyCanHurt : MonoBehaviour
     }
     public virtual void Hurt(){
         GetComponent<Animator>().SetTrigger("hurt");
-        AudioHandlerScript.PlayClipAtPoint("DoorClosing", "DoorClosing", 0.5f, transform.position);
+        //AudioHandlerScript.PlayClipAtPoint("DoorClosing", "DoorClosing", 0.5f, transform.position);
     }
 }

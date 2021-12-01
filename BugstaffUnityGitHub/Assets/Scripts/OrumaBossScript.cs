@@ -99,7 +99,7 @@ public class OrumaBossScript : MonoBehaviour
     {
         if (mode < 2 && col.gameObject.GetComponent<DealDamageScript>() != null && col.gameObject.GetComponent<DealDamageScript>().playerOwned){
             hits++;
-            AudioHandlerScript.PlayClipAtPoint("DoorClosing", "DoorClosing", 0.5f, transform.position);
+            AudioHandlerScript.PlayHitAtPoint(transform.position, 3);
             delay = 0f;
             mode = 2;
         }
